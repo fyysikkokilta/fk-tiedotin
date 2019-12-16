@@ -1,5 +1,5 @@
-# FK-tiedotin
-Tool for making a structured weekly bulletin. Information about events are fed to the GUI (information includes header, date, category of event and date) and they are saved to a database. Formatted html-file is created from database entries that can be used in emails and websites. 
+# FK-tiedotin 2020
+Tool for making a structured weekly bulletin for the Guild of Physics. Forked from [summila](https://github.com/summis/fk-tiedotin). Information about events are fed to the GUI (information includes header, date, category of event and date) and they are saved to a database. Formatted HTML-file is created from database entries that can be used in emails and websites. 
 
 Tool is still under construction.
 
@@ -10,7 +10,7 @@ Clone the repository.
 Fk-tiedotin is written in Python and uses following libraries: PyQt5, TinyDB, Jinja2.
 These can be installed with
 
-`pip3 install pyqt5 tinydb Jinja2`
+`pip3 install pyqt5 tinydb Jinja2 pyperclip`
 
 ## Usage
 Open GUI to add entries to database:
@@ -24,4 +24,4 @@ Create bulletin form database entries:
 Entries are saved as json in data-folder and ready emails are saved in mails-folder. For every week new database and a new mail are created.
 
 ## Remarks
-HTML used in the email must be written in a style that it looks similar in (almost) all email clients. 
+HTML used in the email must be written in a style that it looks similar in (almost) all email clients.
