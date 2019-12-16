@@ -4,8 +4,7 @@ from PyQt5.QtWidgets import (QApplication, QDialog, QGridLayout, QGroupBox,
         QRadioButton, QHBoxLayout, QVBoxLayout, QStyleFactory, QLineEdit, 
         QTextEdit, QLabel, QPushButton, QTabWidget, QWidget, QButtonGroup,
         QDateEdit, QCheckBox, QShortcut, QTextBrowser)
-from database import saveEntry
-import pyperclip
+from utils import save_entry
 
 
 class MainWindow(QDialog):
@@ -22,22 +21,16 @@ class MainWindow(QDialog):
         mainLayout.addLayout(self.buttonLayout, 2, 0)
         self.setLayout(mainLayout)
 
-        # some hotkey bindings
-        QShortcut(QtGui.QKeySequence( "Ctrl+H" ), self).activated.connect(self.copyContentToHeader)
-        QShortcut(QtGui.QKeySequence( "Ctrl+X" ), self).activated.connect(self.clear)
-        QShortcut(QtGui.QKeySequence( "Ctrl+B" ), self).activated.connect(self.copyContentToTextArea)
-        QShortcut(QtGui.QKeySequence( "Ctrl+S" ), self).activated.connect(self.save)
-        QShortcut(QtGui.QKeySequence( "Ctrl+Q" ), self).activated.connect(self.close)
-        #QShortcut(QtGui.QKeySequence( "Ctrl+M" ), self).activated.connect(self.hide)
-
         QApplication.setStyle(QStyleFactory.create("cleanlooks"))
-        self.setWindowTitle("Fk-tiedotin")
+        self.setWindowTitle("FK-tiedotin")
 
 
 
     def createCategorySelectionGroupBox(self):
         self.languageCheckBox = QCheckBox("Text in English", self)
         self.languageCheckBox.stateChanged.connect(self.languageCheckBoxClicked)
+
+        self.toBothBulletinsCheckBox = QCheckBox("Add to both versions", self)
 
         categorySelectionGroupBox = QGroupBox("Category")
         self.categorySelectionButtonGroup = QButtonGroup()
@@ -69,6 +62,7 @@ class MainWindow(QDialog):
 
         self.categorySelectionLayout = QVBoxLayout()
         self.categorySelectionLayout.addWidget(self.languageCheckBox)
+        self.categorySelectionLayout.addWidget(self.toBothBulletinsCheckBox)
         self.categorySelectionLayout.addWidget(categorySelectionGroupBox)
         self.categorySelectionLayout.addWidget(dateLabel)
         self.categorySelectionLayout.addWidget(self.dateEdit)
@@ -88,14 +82,6 @@ class MainWindow(QDialog):
             self.radioButton4.setText("Opinnot")
 
 
-
-    def copyContentToHeader(self):
-        self.headerLineEdit.setText(pyperclip.paste())
-
-
-
-    def copyContentToTextArea(self):
-        self.contentTextEdit.setText(pyperclip.paste())
 
 
     #def hide(self):
@@ -139,20 +125,27 @@ class MainWindow(QDialog):
         self.buttonLayout.addWidget(savePushButton)
 
 
-
     def save(self):
         category = self.categorySelectionButtonGroup.checkedButton().text()
         date = [self.dateEdit.date().day(), self.dateEdit.date().month(), self.dateEdit.date().year()]
         header = self.headerLineEdit.text()
         content = self.contentTextEdit.toPlainText()
 
-        saveEntry({
+        save_entry({
             'category': category,
             'date': date,
             'header': header,
             'content': content
             }, self.languageCheckBox.isChecked())
-        
+
+        if self.toBothBulletinsCheckBox.isChecked():
+            save_entry({
+                'category': category,
+                'date': date,
+                'header': header,
+                'content': content
+                }, not self.languageCheckBox.isChecked())
+
         self.clear()
 
 
@@ -160,6 +153,7 @@ class MainWindow(QDialog):
         self.headerLineEdit.clear()
         self.contentTextEdit.clear()
         self.languageCheckBox.setCheckState(0)
+        self.toBothBulletinsCheckBox.setCheckState(0)
         self.dateEdit.setDateTime(QDateTime.currentDateTime())
 
 
