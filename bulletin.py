@@ -13,8 +13,8 @@ env = Environment(
 
 
 def nl2br(s):
-    """Change linebreaks to <br /> tags.""" 
-    return s.replace('\n', Markup('<br/>\n'))   
+    """Change linebreaks to <br /> tags."""
+    return s.replace('\n', Markup('<br/>\n'))
 
 env.filters['nl2br'] = nl2br    # Add function to env's filters.
 
@@ -34,7 +34,7 @@ pairs_en = grouper(entries_en, categories_en)
 template = env.get_template('cells.html')
 variables = {
     "title": "Fyysikkokillan viikkotiedote",
-    "header": week+"/2019\n"+"Kilta tiedottaa - Guild News",
+    "header": week+"/2019\n"+"Kilta tiedottaa\nGuild News",
     "category_events": pairs,
     "category_events_en": pairs_en,
     }

@@ -9,13 +9,13 @@
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td style="padding: 30px 0 30px 0;">
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; border: 1px solid #cccccc;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; border: 2px solid #cccccc;">
             <tr>
               <td style="padding: 50px 30px 50px 30px;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 		  {% block header %}{% endblock %}
                   <tr>
-                    <td align="right" style="padding: 10px 0px 10px 0px; font-family: Calibri; font-size: 16px;">
+                    <td align="right" style="padding: 10px 0px 10px 0px; font-family: Lora, Georgia; font-size: 16px;">
                         <a href="#in_english" style="color: #ff8a04; text-decoration:none;"><b>In English below</b></a>
                     </td>
                   </tr>
@@ -23,13 +23,17 @@
 		  {% block toc %}{% endblock %}
 		  {% block content %}{% endblock %}
                   <tr id="in_english">
-                    <td align="center" style="padding: 50px 0px 50px 0px;font-family: Calibri; font-size: 16px;">
+                    <td align="center" style="padding: 50px 0px 50px 0px;font-family: Lora, Georgia; font-size: 16px;">
                       ***
                     </td>
                   </tr>
 		  {{ self.fillme() }}
 		  {% block toc_en %}{% endblock %}
 		  {% block content_en %}{% endblock %}
+                  <td style="padding: 10px 0px 25px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px; text-align: center;">
+                    MEME HERE<br>
+                    <img height="37%" src="https://i.imgur.com/zKfGE11.png" style="">
+                  </td>
                 </table>
               </td>
             </tr>

@@ -1,3 +1,5 @@
-# GDrive-inejä #
+# GDrive-inis #
 desktop.ini
 *.pyc
+data/*.json
+mails/*.html
