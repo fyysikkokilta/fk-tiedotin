@@ -23,5 +23,9 @@ Create bulletin from database entries:
 
 Entries are saved with JSON in data-folder and ready emails are saved in mails-folder. For every week new database and a new mail are created.
 
+## Screenshots
+<img alt="GUI" src="https://i.imgur.com/EXiJsG8.png" width="auto">
+<img alt="Bulletin" src="https://i.imgur.com/anv5eMQ.png" width="47%">
+
 ## Remarks
 HTML used in the email must be written in a style that it looks similar in (almost) all email clients.

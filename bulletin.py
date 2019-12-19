@@ -34,7 +34,7 @@ pairs_en = grouper(entries_en, categories_en)
 template = env.get_template('cells.html')
 variables = {
     "title": "Fyysikkokillan viikkotiedote",
-    "header": week+"/2019\n"+"Kilta tiedottaa\nGuild News",
+    "header": week+"/2020\n"+"Kilta tiedottaa\nGuild News",
     "category_events": pairs,
     "category_events_en": pairs_en,
     }

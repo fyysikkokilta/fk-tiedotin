@@ -24,6 +24,7 @@ class MainWindow(QDialog):
 
         QApplication.setStyle(QStyleFactory.create("cleanlooks"))
         self.setWindowTitle("FK-tiedotin")
+        self.setWindowIcon(QtGui.QIcon('templates/fi.png'))
 
 
 
