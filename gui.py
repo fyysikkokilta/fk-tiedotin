@@ -1,10 +1,11 @@
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import QDateTime
 from PyQt5.QtWidgets import (QApplication, QDialog, QGridLayout, QGroupBox,
-        QRadioButton, QHBoxLayout, QVBoxLayout, QStyleFactory, QLineEdit, 
+        QRadioButton, QHBoxLayout, QVBoxLayout, QStyleFactory, QLineEdit,
         QTextEdit, QLabel, QPushButton, QTabWidget, QWidget, QButtonGroup,
         QDateEdit, QCheckBox, QShortcut, QTextBrowser)
 from utils import save_entry
+import codecs
 
 
 class MainWindow(QDialog):
@@ -140,7 +141,7 @@ class MainWindow(QDialog):
 
         if self.toBothBulletinsCheckBox.isChecked():
             save_entry({
-                'category': category,
+                'category': category,   # both languages fix here
                 'date': date,
                 'header': header,
                 'content': content
@@ -165,4 +166,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     tiedotin = MainWindow()
     tiedotin.show()
-    sys.exit(app.exec_()) 
+    sys.exit(app.exec_())

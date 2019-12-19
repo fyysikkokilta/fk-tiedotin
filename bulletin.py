@@ -39,7 +39,7 @@ variables = {
     "category_events_en": pairs_en,
     }
 tiedote = template.render(variables)
-with open('mails/kilta-tiedottaa-viikko-'+week+'.html', 'w') as f:
+with open('mails/kilta-tiedottaa-viikko-'+week+'.html', 'w', encoding='utf-8') as f:
     f.write(tiedote)
 
 

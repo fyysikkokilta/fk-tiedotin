@@ -7,9 +7,9 @@ from tinydb import TinyDB, Query
 
 # Define categories for entries and current week.
 
-# To make a newsletter for a specific week (eg week 1), last possible occasion 
-# to do it is on Monday of that specific week (week 1).  On Tuesday newsletter is made for the 
-# following week (week 2).  timedelta correction below takes into account this and a fact 
+# To make a newsletter for a specific week (eg week 1), last possible occasion
+# to do it is on Monday of that specific week (week 1).  On Tuesday newsletter is made for the
+# following week (week 2).  timedelta correction below takes into account this and a fact
 # that datetime library consideres week 1 to be the year's first week that starts from Monday,
 # which differs from finnish convention.  Correction is different every year.
 week = (date.today()+timedelta(days=13)).strftime('%W')
@@ -27,7 +27,7 @@ def save_entry(dict, isEnglish=False):
         path = 'data/week'+week+'-en.json'
     else:
         path = 'data/week'+week+'.json'
-    db = TinyDB(path)
+    db = TinyDB(path, ensure_ascii=False)
     db.insert(dict)
 
 
@@ -37,7 +37,7 @@ def all_entries(isEnglish=False):
         path = 'data/week'+week+'-en.json'
     else:
         path = 'data/week'+week+'.json'
-    db = TinyDB(path)
+    db = TinyDB(path, ensure_ascii=False)
     return db.all()
 
 
@@ -61,7 +61,7 @@ def in_current_week(x):
 
 def grouper(entries, cats):
     """Return tuple, which consists of string and another tuple, which consist of two lists.
-    First entries are grouped by category and sorted by date. Then they are sorted even 
+    First entries are grouped by category and sorted by date. Then they are sorted even
     further to events that happen this week and events that happen later in the future.
     """
     category_and_events = []
