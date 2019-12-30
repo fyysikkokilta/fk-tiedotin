@@ -1,6 +1,5 @@
 from functools import partial
-
-from jinja2 import Environment, FileSystemLoader, select_autoescape, Markup
+from jinja2 import Environment, FileSystemLoader, Markup
 from utils import grouper, category_sort, categories, categories_en, week, all_entries
 
 
@@ -37,6 +36,9 @@ variables = {
     "header": week+"/2020\n"+"Kilta tiedottaa\nGuild News",
     "category_events": pairs,
     "category_events_en": pairs_en,
+    "communications_officer": "Niko Savola",
+    "telegram_nick": "viestintavastaava",
+    "email": "viestintavastaava@fyysikkokilta.fi"
     }
 tiedote = template.render(variables)
 with open('mails/kilta-tiedottaa-viikko-'+week+'.html', 'w', encoding='utf-8') as f:

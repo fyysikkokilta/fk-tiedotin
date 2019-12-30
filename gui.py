@@ -70,8 +70,30 @@ class MainWindow(QDialog):
         self.categorySelectionLayout.addWidget(self.dateEdit)
 
 
+    def otherLanguageText(self, text): #spaghetti kunnes löytää scalamaisen ratkaisun
+        if (text == "Guild's events"):
+            return "Killan tapahtumat"
+        elif (text == "Killan tapahtumat"):
+            return "Guild's events"
+        elif (text == "Other events"):
+            return "Muut tapahtumat"
+        elif (text == "Muut tapahtumat"):
+            return "Other events"
+        elif (text == "General"):
+            return "Yleistä"
+        elif (text == "Yleistä"):
+            return "General"
+        elif (text == "Studies"):
+            return "Opinnot"
+        elif (text == "Opinnot"):
+            return "Studies"
+        else:
+            raise Exception("Wrong value for otherLanguageText")
 
-    def languageCheckBoxClicked(self,state):
+
+
+
+    def languageCheckBoxClicked(self, state):
         if state == QtCore.Qt.Checked:
             self.radioButton1.setText("Guild's events")
             self.radioButton2.setText("Other events")
@@ -82,7 +104,6 @@ class MainWindow(QDialog):
             self.radioButton2.setText("Muut tapahtumat")
             self.radioButton3.setText("Yleistä")
             self.radioButton4.setText("Opinnot")
-
 
 
 
@@ -142,7 +163,7 @@ class MainWindow(QDialog):
 
         if self.toBothBulletinsCheckBox.isChecked():
             save_entry({
-                'category': category,   # both languages fix here
+                'category': self.otherLanguageText(category),   # both languages fix here
                 'date': date,
                 'header': header,
                 'content': content

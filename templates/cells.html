@@ -10,9 +10,9 @@
   {% endif %}
   <tr>
     <td style="padding: 5px 0px 5px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
-      <ul style="margin: 0;">
+      <ul style="margin: 0; list-style-type: square;">
       {% for entry in this_week %}
-        <li><a href="#entry_num_{{ entry.doc_id }}" style="color: #ff8a04; text-decoration:none;">{{ entry.header|e }}</a></li>
+        <li><a href="#entry_num_{{ entry.doc_id }}" style="color: #ff8a04; text-decoration:none; font-weight: bold;">{{ entry.header|e }}</a></li>
       {% endfor %}
       </ul>
     </td>
@@ -32,9 +32,9 @@
   {% endif %}
   <tr>
     <td style="padding: 5px 0px 20px 0px; font-family: Source Sans Pro, Open Sans, Calibri;; font-size: 16px;">
-      <ul style="margin: 0;">
+      <ul style="margin: 0; list-style-type: square;">
       {% for entry in following_week %}
-        <li><a href="#entry_num_{{ entry.doc_id }}" style="color: #ff8a04; text-decoration:none;"> {{ entry.header|e }}</a></li>
+        <li><a href="#entry_num_{{ entry.doc_id }}" style="color: #ff8a04; text-decoration:none; font-weight: bold;"> {{ entry.header|e }}</a></li>
       {% endfor %}
       </ul>
     </td>
@@ -74,9 +74,9 @@
   {% endif %}
   <tr>
     <td style="padding: 5px 0px 5px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
-      <ul style="margin: 0;">
+      <ul style="margin: 0; list-style-type: square;">
       {% for entry in this_week %}
-        <li><a href="#entry_num_{{ entry.doc_id }}_en" style="color: #ff8a04; text-decoration:none;">{{ entry.header|e }}</a></li>
+        <li><a href="#entry_num_{{ entry.doc_id }}_en" style="color: #ff8a04; text-decoration:none; font-weight: bold;">{{ entry.header|e }}</a></li>
       {% endfor %}
       </ul>
     </td>
@@ -96,9 +96,9 @@
   {% endif %}
   <tr>
     <td style="padding: 5px 0px 20px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
-      <ul style="margin: 0;">
+      <ul style="margin: 0; list-style-type: square;">
       {% for entry in following_week %}
-        <li><a href="#entry_num_{{ entry.doc_id }}_en" style="color: #ff8a04; text-decoration:none;">{{ entry.header|e }}</a></li>
+        <li><a href="#entry_num_{{ entry.doc_id }}_en" style="color: #ff8a04; text-decoration:none; font-weight: bold;">{{ entry.header|e }}</a></li>
       {% endfor %}
       </ul>
     </td>
