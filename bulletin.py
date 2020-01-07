@@ -38,7 +38,8 @@ variables = {
     "category_events_en": pairs_en,
     "communications_officer": "Niko Savola",
     "telegram_nick": "viestintavastaava",
-    "email": "viestintavastaava@fyysikkokilta.fi"
+    "email": "viestintavastaava@fyysikkokilta.fi",
+    "week": week
     }
 tiedote = template.render(variables)
 with open('mails/kilta-tiedottaa-viikko-'+week+'.html', 'w', encoding='utf-8') as f:

@@ -2,7 +2,7 @@ from datetime import date, timedelta
 from functools import partial
 from itertools import groupby
 
-from tinydb import TinyDB, Query
+from tinydb import TinyDB
 
 
 # Define categories for entries and current week.
@@ -18,7 +18,6 @@ categories = ["Yleistä", "Killan tapahtumat", "Muut tapahtumat", "Opinnot"]
 categories_en = ["General", "Guild's events", "Other events", "Studies"]
 
 
-
 # Database logic.
 
 def save_entry(dict, isEnglish=False):
@@ -27,7 +26,7 @@ def save_entry(dict, isEnglish=False):
         path = 'data/week'+week+'-en.json'
     else:
         path = 'data/week'+week+'.json'
-    db = TinyDB(path, ensure_ascii=False)
+    db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
     db.insert(dict)
 
 
@@ -37,7 +36,7 @@ def all_entries(isEnglish=False):
         path = 'data/week'+week+'-en.json'
     else:
         path = 'data/week'+week+'.json'
-    db = TinyDB(path, ensure_ascii=False)
+    db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
     return db.all()
 
 

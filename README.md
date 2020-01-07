@@ -7,7 +7,7 @@ Tool is still under construction.
 Clone the repository.
 
 ### Dependecies
-FK-tiedotin is written in Python and uses following libraries: PyQt5, TinyDB, Jinja2.
+FK-tiedotin is written in **Python 3** and uses following libraries: PyQt5, TinyDB, Jinja2.
 These can be installed with
 
 `pip3 install pyqt5 tinydb Jinja2`
@@ -23,9 +23,14 @@ Create bulletin from database entries:
 
 Entries are saved with JSON in data-folder and ready emails are saved in mails-folder. For every week new database and a new mail are created.
 
+
 ## Screenshots
-<img alt="GUI" src="https://i.imgur.com/EXiJsG8.png" width="auto">
-<img alt="Bulletin" src="https://i.imgur.com/anv5eMQ.png" width="47%">
+<p float="left">
+  <img alt="GUI" src="https://i.imgur.com/l9mBWeR.png" width="auto"><img alt="Bulletin" src="https://i.imgur.com/anv5eMQ.png" width="375px">
+</p>
+
 
 ## Remarks
-HTML used in the email must be written in a style that it looks similar in (almost) all email clients.
+
+* ``bulletin.py`` contains editable text variables for title and footer
+* HTML used in the email must be written in a style that it looks similar in (almost) all email clients.

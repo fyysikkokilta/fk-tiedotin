@@ -5,7 +5,6 @@ from PyQt5.QtWidgets import (QApplication, QDialog, QGridLayout, QGroupBox,
         QTextEdit, QLabel, QPushButton, QTabWidget, QWidget, QButtonGroup,
         QDateEdit, QCheckBox, QShortcut, QTextBrowser)
 from utils import save_entry
-import codecs
 
 
 class MainWindow(QDialog):
@@ -26,7 +25,10 @@ class MainWindow(QDialog):
         self.setWindowTitle("FK-tiedotin")
         self.setWindowIcon(QtGui.QIcon('templates/fi.png'))
 
-
+        # Always-on-top mode. Currently does not work on Windows.
+        #alwaysOnTopShortcut = QShortcut(QtGui.QKeySequence("Ctrl+O"), self)
+        #alwaysOnTopShortcut.activated.connect(lambda:
+        #    super(MainWindow, self).__init__(parent, QtCore.Qt.WindowStaysOnTopHint))
 
     def createCategorySelectionGroupBox(self):
         self.languageCheckBox = QCheckBox("Text in English", self)
@@ -70,7 +72,8 @@ class MainWindow(QDialog):
         self.categorySelectionLayout.addWidget(self.dateEdit)
 
 
-    def otherLanguageText(self, text): #spaghetti kunnes löytää scalamaisen ratkaisun
+    def otherLanguageText(self, text): # convert to dictionary
+
         if (text == "Guild's events"):
             return "Killan tapahtumat"
         elif (text == "Killan tapahtumat"):
@@ -90,7 +93,22 @@ class MainWindow(QDialog):
         else:
             raise Exception("Wrong value for otherLanguageText")
 
+        """
+        categoriesDict_en = {
+            "Guild's events":"Killan tapahtumat",
+            "Other events":"Muut tapahtumat",
+            "General":"Yleistä",
+            "Studies":"Opinnot"
+        }
 
+        categoriesDict_fi = dict(reversed(item) for item in categoriesDict_en.items())
+        categoriesDict = dict(categoriesDict_en, categoriesDict_fi)
+
+        try:
+            return categoriesDict(text)
+        except ValueError:
+            raise Exception("Wrong value for otherLanguageText")
+        """
 
 
     def languageCheckBoxClicked(self, state):

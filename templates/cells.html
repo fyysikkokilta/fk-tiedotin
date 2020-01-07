@@ -48,7 +48,7 @@
   <tr>
     <td id="entry_num_{{entry.doc_id}}" style="padding: 10px 0px 20px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
       <b>{{ entry.header|e }}</b><br/>
-      {{ entry.content|e|nl2br }}
+      {{ entry.content|e|nl2br|urlize(100, true) }}
     </td>
   </tr>
 {% endfor %}
@@ -56,7 +56,7 @@
   <tr>
     <td id="entry_num_{{entry.doc_id}}" style="padding: 10px 0px 20px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
       <b>{{ entry.header|e }}</b><br/>
-      {{ entry.content|e|nl2br }}
+      {{ entry.content|e|nl2br|urlize(100, true) }}
     </td>
   </tr>
 {% endfor %}
@@ -112,7 +112,7 @@
   <tr>
     <td id="entry_num_{{entry.doc_id}}_en" style="padding: 10px 0px 20px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
       <b>{{ entry.header|e }}</b><br/>
-      {{ entry.content|e|nl2br }}
+      {{ entry.content|e|nl2br|urlize(100, true) }}
     </td>
   </tr>
   {% endfor %}
@@ -120,7 +120,7 @@
   <tr>
     <td id="entry_num_{{entry.doc_id}}_en" style="padding: 10px 0px 20px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px;">
       <b>{{ entry.header|e }}</b><br/>
-      {{ entry.content|e|nl2br }}
+      {{ entry.content|e|nl2br|urlize(100, true) }}
     </td>
   </tr>
 {% endfor %}

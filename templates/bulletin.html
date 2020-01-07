@@ -36,14 +36,15 @@
 		  {% block toc_en %}{% endblock %}
 		  {% block content_en %}{% endblock %}
                   <td style="padding: 10px 0px 25px 0px; font-family: Source Sans Pro, Open Sans, Calibri; font-size: 16px; text-align: center;">
-                    Bonus meme for the people who read this far<br>
-                    <img width="auto" height="auto" src="https://www.fyysikkokilta.fi/wp-content/uploads/weeklymeme/1.jpg" style="border-width: 1px; border-color: #201E1E; border-style: solid; max-width:400px;">
+                    <a href="https://www.fyysikkokilta.fi/wp-content/uploads/weeklymeme/{{ week }}.jpg" style="color: #ff8a04; text-decoration:none; font-weight:bold;">Bonus meme for the people who read this far</a><br>
+                    <img width="auto" height="auto" src="https://www.fyysikkokilta.fi/wp-content/uploads/weeklymeme/{{ week }}.jpg" style="border-width: 1px; border-color: #201E1E; border-style: solid; max-width:400px;">
                     <br>
                     <br>
-      <span style="color: #737373">
+      <span style="font-size: 13px; color: #737373;">
+        Viestintävastaava / Communications Officer <br>
         {{ communications_officer }} <br>
-        <a href="https://t.me/{{ telegram_nick }}">@{{ telegram_nick }}</a> <br>
-        <a href="mailto:{{ email }}">{{ email }}</a>
+        <a href="https://t.me/{{ telegram_nick }}" style="color: #ff8a04; text-decoration:none;">@{{ telegram_nick }}</a> <br>
+        <a href="mailto:{{ email }}" style="color: #ff8a04; text-decoration:none;">{{ email }}</a>
       </span>
                   </td>
                 </table>
