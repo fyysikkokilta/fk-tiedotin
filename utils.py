@@ -14,8 +14,8 @@ from tinydb import TinyDB
 # which differs from finnish convention.  Correction is different every year.
 week = (date.today()+timedelta(days=13)).strftime('%W')
 
-categories = ["Yleistä", "Killan tapahtumat", "Muut tapahtumat", "Opinnot"]
-categories_en = ["General", "Guild's events", "Other events", "Studies"]
+categories = ["Opinnot", "Killan tapahtumat", "Muut tapahtumat", "Yleistä"]
+categories_en = ["Studies", "Guild's events", "Other events", "General"]
 
 
 # Database logic.

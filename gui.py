@@ -137,16 +137,20 @@ class MainWindow(QDialog):
         self.textEditLayout = QVBoxLayout()
 
         self.headerLineEdit = QLineEdit()
+        self.imageUrl = QLineEdit()
         self.contentTextEdit = QTextEdit()
 
         headerLabel = QLabel("Header")
         headerLabel.setBuddy(self.headerLineEdit)
-
+        imageUrlLabel = QLabel("Image URL")
+        imageUrlLabel.setBuddy(self.imageUrl)
         contentLabel = QLabel("Content")
         contentLabel.setBuddy(self.contentTextEdit)
 
         self.textEditLayout.addWidget(headerLabel)
         self.textEditLayout.addWidget(self.headerLineEdit)
+        self.textEditLayout.addWidget(imageUrlLabel)
+        self.textEditLayout.addWidget(self.imageUrl)
         self.textEditLayout.addWidget(contentLabel)
         self.textEditLayout.addWidget(self.contentTextEdit)
 
@@ -170,12 +174,14 @@ class MainWindow(QDialog):
         category = self.categorySelectionButtonGroup.checkedButton().text()
         date = [self.dateEdit.date().day(), self.dateEdit.date().month(), self.dateEdit.date().year()]
         header = self.headerLineEdit.text()
+        image = self.imageUrl.text()
         content = self.contentTextEdit.toPlainText()
 
         save_entry({
             'category': category,
             'date': date,
             'header': header,
+            'image': image,
             'content': content
             }, self.languageCheckBox.isChecked())
 
@@ -184,6 +190,7 @@ class MainWindow(QDialog):
                 'category': self.otherLanguageText(category),   # both languages fix here
                 'date': date,
                 'header': header,
+                'image': image,
                 'content': content
                 }, not self.languageCheckBox.isChecked())
 
@@ -192,6 +199,7 @@ class MainWindow(QDialog):
 
     def clear(self):
         self.headerLineEdit.clear()
+        self.imageUrl.clear()
         self.contentTextEdit.clear()
         self.languageCheckBox.setCheckState(0)
         self.toBothBulletinsCheckBox.setCheckState(0)
