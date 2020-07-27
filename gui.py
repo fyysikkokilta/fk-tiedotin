@@ -136,10 +136,14 @@ class MainWindow(QDialog):
     def createTextEditLayout(self):
         self.textEditLayout = QVBoxLayout()
 
+        self.additionalWeeksEdit = QLineEdit()
+        self.additionalWeeksEdit.setText("0") # default
         self.headerLineEdit = QLineEdit()
         self.imageUrl = QLineEdit()
         self.contentTextEdit = QTextEdit()
 
+        addWeeksLabel = QLabel("Additional weeks")
+        addWeeksLabel.setBuddy(self.additionalWeeksEdit)
         headerLabel = QLabel("Header")
         headerLabel.setBuddy(self.headerLineEdit)
         imageUrlLabel = QLabel("Image URL")
@@ -147,6 +151,8 @@ class MainWindow(QDialog):
         contentLabel = QLabel("Content")
         contentLabel.setBuddy(self.contentTextEdit)
 
+        self.textEditLayout.addWidget(addWeeksLabel)
+        self.textEditLayout.addWidget(self.additionalWeeksEdit)
         self.textEditLayout.addWidget(headerLabel)
         self.textEditLayout.addWidget(self.headerLineEdit)
         self.textEditLayout.addWidget(imageUrlLabel)
@@ -173,6 +179,7 @@ class MainWindow(QDialog):
     def save(self):
         category = self.categorySelectionButtonGroup.checkedButton().text()
         date = [self.dateEdit.date().day(), self.dateEdit.date().month(), self.dateEdit.date().year()]
+        weeks = int(self.additionalWeeksEdit.text())
         header = self.headerLineEdit.text()
         image = self.imageUrl.text()
         content = self.contentTextEdit.toPlainText()
@@ -183,7 +190,7 @@ class MainWindow(QDialog):
             'header': header,
             'image': image,
             'content': content
-            }, self.languageCheckBox.isChecked())
+            }, self.languageCheckBox.isChecked(), weeks)
 
         if self.toBothBulletinsCheckBox.isChecked():
             save_entry({
@@ -192,7 +199,7 @@ class MainWindow(QDialog):
                 'header': header,
                 'image': image,
                 'content': content
-                }, not self.languageCheckBox.isChecked())
+                }, not self.languageCheckBox.isChecked(), weeks)
 
         self.clear()
 

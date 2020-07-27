@@ -1,7 +1,6 @@
 from datetime import date, timedelta
 from functools import partial
 from itertools import groupby
-
 from tinydb import TinyDB
 
 
@@ -19,16 +18,16 @@ categories_en = ["Studies", "Guild's events", "Other events", "General"]
 
 
 # Database logic.
-
-def save_entry(dict, isEnglish=False):
+def save_entry(dict, isEnglish=False, addWeeks=0):
     """Save entry to database."""
-    if isEnglish:
-        path = 'data/week'+week+'-en.json'
-    else:
-        path = 'data/week'+week+'.json'
-    db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
-    db.insert(dict)
-
+    for i in range(addWeeks+1):
+        week_number = str(int(week)+i)
+        if isEnglish:
+            path = 'data/week'+week_number+'-en.json'
+        else:
+            path = 'data/week'+week_number+'.json'
+        db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
+        db.insert(dict)
 
 def all_entries(isEnglish=False):
     """Return all events from database for this week."""
@@ -42,21 +41,17 @@ def all_entries(isEnglish=False):
 
 
 # Functions for grouping and sorting database entries.
-
 def category_sort(x, cats):
     """Return index of database entry's category from a given list."""
     return cats.index(x['category'])
-
 
 def date_sort(x):
     """Return date of database-entry."""
     return date(x['date'][2], x['date'][1], x['date'][0])
 
-
 def in_current_week(x):
     """Test whether entry's date is on current week."""
     return int((date(x['date'][2], x['date'][1], x['date'][0]) - timedelta(days=1)).strftime('%U')) + 1 == int(week)
-
 
 def grouper(entries, cats):
     """Return tuple, which consists of string and another tuple, which consist of two lists.
