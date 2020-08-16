@@ -21,6 +21,8 @@ Create bulletin from database entries:
 
 Entries are saved as JSON in the data-folder and finished emails are saved in the mails-folder. A new database and a new email are created for every week.
 
+**Windows users NB:** In order to support *special characters*, start the programs with the argument `python -X utf8` or set the environment variable `set PYTHONUTF8=1`.
+
 
 ## Screenshots
 <p float="left">

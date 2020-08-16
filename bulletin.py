@@ -31,6 +31,7 @@ pairs_en = grouper(entries_en, categories_en)
 
 
 template = env.get_template('cells.html')
+template_en = env.get_template('cells_en.html')
 variables = {
     "title": "Fyysikkokillan viikkotiedote",
     "header": week+"/2020\n"+"Kilta tiedottaa\nGuild News",
@@ -41,9 +42,14 @@ variables = {
     "email": "viestintavastaava@fyysikkokilta.fi",
     "week": week
     }
+
 tiedote = template.render(variables)
+tiedote_en = template_en.render(variables)
+
 with open('mails/kilta-tiedottaa-viikko-'+week+'.html', 'w', encoding='utf-8') as f:
     f.write(tiedote)
 
+with open('mails/kilta-tiedottaa-viikko-'+week+'-en.html', 'w', encoding='utf-8') as f:
+    f.write(tiedote_en)
 
 print("Bulletin made succesfully.")
