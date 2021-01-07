@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import QDateTime
 from PyQt5.QtWidgets import (QApplication, QDialog, QGridLayout, QGroupBox,

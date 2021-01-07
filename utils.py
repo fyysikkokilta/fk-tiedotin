@@ -4,6 +4,7 @@ from itertools import groupby
 from tinydb import TinyDB
 
 
+
 # Define categories for entries and current week.
 
 # To make a newsletter for a specific week (eg week 1), last possible occasion
@@ -21,7 +22,7 @@ categories_en = ["Studies", "Guild's events", "Other events", "General"]
 def save_entry(dict, isEnglish=False, addWeeks=0):
     """Save entry to database."""
     for i in range(addWeeks+1):
-        week_number = str(int(week)+i)
+        week_number = str(int(week)+i).zfill(2)
         if isEnglish:
             path = 'data/week'+week_number+'-en.json'
         else:
