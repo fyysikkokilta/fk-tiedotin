@@ -2,7 +2,7 @@
 
 week=$(date +%U)
 year=$(date +%Y)
-((week++))
+#((week++))
 week=$(LC_NUMERIC="en_US.UTF-8" printf "%.2d" $((week)))
 echo "The week number is $week."
 
