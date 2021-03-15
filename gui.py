@@ -182,7 +182,7 @@ class MainWindow(QDialog):
         category = self.categorySelectionButtonGroup.checkedButton().text()
         date = [self.dateEdit.date().day(), self.dateEdit.date().month(), self.dateEdit.date().year()]
         weeks = int(self.additionalWeeksEdit.text())
-        header = self.headerLineEdit.text()
+        header = self.headerLineEdit.text().strip()
         image = self.imageUrl.text()
         content = self.contentTextEdit.toPlainText()
 
