@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from functools import partial
-from jinja2 import Environment, FileSystemLoader, Markup
+
+from jinja2 import Environment, FileSystemLoader
+from markupsafe import Markup
+
 from utils import grouper, category_sort, categories, categories_en, week, all_entries
 
 
@@ -37,10 +40,10 @@ template_en = env.get_template('cells_en.html')
 template_short = env.get_template('cells_short.html')
 variables = {
     "title": "Fyysikkokillan viikkotiedote",
-    "header": week+"/2020\n"+"Kilta tiedottaa\nGuild News",
+    "header": week+"/2022\n"+"Kilta tiedottaa\nGuild News",
     "category_events": pairs,
     "category_events_en": pairs_en,
-    "communications_officer": "Niko Savola",
+    "communications_officer": "Jaakko Johansson",
     "telegram_nick": "viestintavastaava",
     "email": "viestintavastaava@fyysikkokilta.fi",
     "week": week

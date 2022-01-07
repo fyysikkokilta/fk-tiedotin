@@ -19,7 +19,7 @@ categories_en = ["Studies", "Guild's events", "Other events", "General"]
 
 
 # Database logic.
-def save_entry(dict, isEnglish=False, addWeeks=0):
+def save_entry(entry, isEnglish=False, addWeeks=0):
     """Save entry to database."""
     for i in range(addWeeks+1):
         week_number = str(int(week)+i).zfill(2)
@@ -28,7 +28,7 @@ def save_entry(dict, isEnglish=False, addWeeks=0):
         else:
             path = 'data/week'+week_number+'.json'
         db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
-        db.insert(dict)
+        db.insert(entry)
 
 def all_entries(isEnglish=False):
     """Return all events from database for this week."""
