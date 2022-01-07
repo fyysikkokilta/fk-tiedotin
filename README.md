@@ -2,24 +2,40 @@
 Tool for making a structured weekly bulletin for the Guild of Physics. Forked from [summila](https://github.com/summis/fk-tiedotin). Information about events are fed to the GUI (information includes header, date, category of event and date) and they are saved to a database. Formatted HTML-file is created from database entries that can be used in emails and websites.
 
 ## Installation
-Clone the repository.
 
-### Dependecies
+First, clone the repository.
+
+Use [Git Bash](https://gitforwindows.org/) on Windows. Any other shell on any other OS should be fine.
+
+### Dependencies
 FK-tiedotin is written in **Python 3** and uses following libraries: PyQt5, TinyDB, Jinja2.
 These can be installed with
 
-`pip3 install pyqt5 tinydb Jinja2`
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 Open GUI to add entries to database:
 
-`python gui.py`
+```bash
+python gui.py
+```
 
 Create bulletin from database entries:
 
-`python bulletin.py`
+```bash
+python bulletin.py
+```
 
 Entries are saved as JSON in the data-folder and finished emails are saved in the mails-folder. A new database and a new email are created for every week.
+
+### Uploading `.json` for Fyysikkokilta website
+
+To upload the correct weekly `.json` to the Fyysikkokilta website for the [corresponding Telegram bot](https://github.com/fyysikkokilta/fk-viikkotiedotebot) to work, set up permissions to `ssh` to `fk@otax.fi` and simply run
+```bash
+upload-to-otax.sh
+```
 
 **Windows users NB:** In order to support *special characters*, start the programs with the argument `python -X utf8` or set the environment variable `set PYTHONUTF8=1`.
 
