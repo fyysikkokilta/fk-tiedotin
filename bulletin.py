@@ -40,10 +40,10 @@ template_en = env.get_template('cells_en.html')
 template_short = env.get_template('cells_short.html')
 variables = {
     "title": "Fyysikkokillan viikkotiedote",
-    "header": week+"/2022\n"+"Kilta tiedottaa\nGuild News",
+    "header": week+"/2023\n"+"Kilta tiedottaa\nGuild News",
     "category_events": pairs,
     "category_events_en": pairs_en,
-    "communications_officer": "Jaakko Johansson",
+    "communications_officer": "Iris Kause",
     "telegram_nick": "viestintavastaava",
     "email": "viestintavastaava@fyysikkokilta.fi",
     "week": week
