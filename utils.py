@@ -12,7 +12,7 @@ from tinydb import TinyDB
 # following week (week 2).  timedelta correction below takes into account this and a fact
 # that datetime library consideres week 1 to be the year's first week that starts from Monday,
 # which differs from finnish convention.  Correction is different every year.
-week = (date.today()+timedelta(days=6)).strftime('%W')
+week = (date.today()+timedelta(days=6)).strftime('%V')
 
 categories = ["Opinnot", "Killan tapahtumat", "Muut tapahtumat", "Yleistä"]
 categories_en = ["Studies", "Guild's events", "Other events", "General"]
