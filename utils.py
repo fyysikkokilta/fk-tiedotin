@@ -9,9 +9,7 @@ from tinydb import TinyDB
 
 # To make a newsletter for a specific week (eg week 1), last possible occasion
 # to do it is on Monday of that specific week (week 1).  On Tuesday newsletter is made for the
-# following week (week 2).  timedelta correction below takes into account this and a fact
-# that datetime library consideres week 1 to be the year's first week that starts from Monday,
-# which differs from finnish convention.  Correction is different every year.
+# following week (week 2).  timedelta correction below takes into account this.
 week = (date.today()+timedelta(days=6)).strftime('%V')
 
 categories = ["Opinnot", "Killan tapahtumat", "Muut tapahtumat", "Yleistä"]
