@@ -1,5 +1,7 @@
 # FK-tiedotin 2020
 
+# Note: This repository is archived in favor of creating weekly bulletins using viikkotiedotebot
+
 ![CI](https://github.com/fyysikkokilta/fk-tiedotin/actions/workflows/ci.yaml/badge.svg)
 
 Tool for making a structured weekly bulletin for the Guild of Physics. Forked from [summila](https://github.com/summis/fk-tiedotin). Information about events are fed to the GUI (information includes header, date, category of event and date) and they are saved to a database. Formatted HTML-file is created from database entries that can be used in emails and websites.
