@@ -4,13 +4,14 @@ from itertools import groupby
 from tinydb import TinyDB
 
 
-
 # Define categories for entries and current week.
 
 # To make a newsletter for a specific week (eg week 1), last possible occasion
 # to do it is on Monday of that specific week (week 1).  On Tuesday newsletter is made for the
 # following week (week 2).  timedelta correction below takes into account this.
-week = (date.today()+timedelta(days=6)).strftime('%V')
+week = (date.today() + timedelta(days=6)).strftime("%V")
+
+year = (date.today() + timedelta(days=6)).strftime("%Y")
 
 categories = ["Opinnot", "Killan tapahtumat", "Muut tapahtumat", "Yleistä"]
 categories_en = ["Studies", "Guild's events", "Other events", "General"]
@@ -19,38 +20,49 @@ categories_en = ["Studies", "Guild's events", "Other events", "General"]
 # Database logic.
 def save_entry(entry, isEnglish=False, addWeeks=0):
     """Save entry to database."""
-    for i in range(addWeeks+1):
-        week_number = str(int(week)+i).zfill(2)
+    for i in range(addWeeks + 1):
+        week_number = str(int(week) + i).zfill(2)
         if isEnglish:
-            path = 'data/week'+week_number+'-en.json'
+            path = "data/week" + week_number + "-en.json"
         else:
-            path = 'data/week'+week_number+'.json'
-        db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
+            path = "data/week" + week_number + ".json"
+        db = TinyDB(
+            path, ensure_ascii=False, sort_keys=True, indent=4, separators=(",", ": ")
+        )
         db.insert(entry)
+
 
 def all_entries(isEnglish=False):
     """Return all events from database for this week."""
     if isEnglish:
-        path = 'data/week'+week+'-en.json'
+        path = "data/week" + week + "-en.json"
     else:
-        path = 'data/week'+week+'.json'
-    db = TinyDB(path, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
+        path = "data/week" + week + ".json"
+    db = TinyDB(
+        path, ensure_ascii=False, sort_keys=True, indent=4, separators=(",", ": ")
+    )
     return db.all()
-
 
 
 # Functions for grouping and sorting database entries.
 def category_sort(x, cats):
     """Return index of database entry's category from a given list."""
-    return cats.index(x['category'])
+    return cats.index(x["category"])
+
 
 def date_sort(x):
     """Return date of database-entry."""
-    return date(x['date'][2], x['date'][1], x['date'][0])
+    return date(x["date"][2], x["date"][1], x["date"][0])
+
 
 def in_current_week(x):
     """Test whether entry's date is on current week."""
-    return int((date(x['date'][2], x['date'][1], x['date'][0]) - timedelta(days=1)).strftime('%U')) + 1 == int(week)
+    return int(
+        (date(x["date"][2], x["date"][1], x["date"][0]) - timedelta(days=1)).strftime(
+            "%U"
+        )
+    ) + 1 == int(week)
+
 
 def grouper(entries, cats):
     """Return tuple, which consists of string and another tuple, which consist of two lists.

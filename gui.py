@@ -2,10 +2,23 @@
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import QDateTime
-from PyQt5.QtWidgets import (QApplication, QDialog, QGridLayout, QGroupBox,
-                             QRadioButton, QHBoxLayout, QVBoxLayout, QStyleFactory, QLineEdit,
-                             QTextEdit, QLabel, QPushButton, QButtonGroup,
-                             QDateEdit, QCheckBox)
+from PyQt5.QtWidgets import (
+    QApplication,
+    QDialog,
+    QGridLayout,
+    QGroupBox,
+    QRadioButton,
+    QHBoxLayout,
+    QVBoxLayout,
+    QStyleFactory,
+    QLineEdit,
+    QTextEdit,
+    QLabel,
+    QPushButton,
+    QButtonGroup,
+    QDateEdit,
+    QCheckBox,
+)
 
 from utils import save_entry
 
@@ -26,7 +39,7 @@ class MainWindow(QDialog):
 
         QApplication.setStyle(QStyleFactory.create("cleanlooks"))
         self.setWindowTitle("FK-tiedotin")
-        self.setWindowIcon(QtGui.QIcon('templates/fi.png'))
+        self.setWindowIcon(QtGui.QIcon("templates/fi.png"))
 
         # Always-on-top mode. Currently does not work on Windows.
         # alwaysOnTopShortcut = QShortcut(QtGui.QKeySequence("Ctrl+O"), self)
@@ -149,28 +162,42 @@ class MainWindow(QDialog):
 
     def save(self):
         category = self.categorySelectionButtonGroup.checkedButton().text()
-        date = [self.dateEdit.date().day(), self.dateEdit.date().month(), self.dateEdit.date().year()]
+        date = [
+            self.dateEdit.date().day(),
+            self.dateEdit.date().month(),
+            self.dateEdit.date().year(),
+        ]
         weeks = int(self.additionalWeeksEdit.text())
         header = self.headerLineEdit.text().strip()
         image = self.imageUrl.text()
         content = self.contentTextEdit.toPlainText()
 
-        save_entry({
-            'category': category,
-            'date': date,
-            'header': header,
-            'image': image,
-            'content': content
-        }, self.languageCheckBox.isChecked(), weeks)
+        save_entry(
+            {
+                "category": category,
+                "date": date,
+                "header": header,
+                "image": image,
+                "content": content,
+            },
+            self.languageCheckBox.isChecked(),
+            weeks,
+        )
 
         if self.toBothBulletinsCheckBox.isChecked():
-            save_entry({
-                'category': self.otherLanguageText(category),  # both languages fix here
-                'date': date,
-                'header': header,
-                'image': image,
-                'content': content
-            }, not self.languageCheckBox.isChecked(), weeks)
+            save_entry(
+                {
+                    "category": self.otherLanguageText(
+                        category
+                    ),  # both languages fix here
+                    "date": date,
+                    "header": header,
+                    "image": image,
+                    "content": content,
+                },
+                not self.languageCheckBox.isChecked(),
+                weeks,
+            )
 
         self.clear()
 
@@ -183,7 +210,7 @@ class MainWindow(QDialog):
         self.dateEdit.setDateTime(QDateTime.currentDateTime())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
